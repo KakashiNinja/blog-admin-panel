@@ -6,6 +6,9 @@ const register = () => {
     <>
       <Sidebar />
       <form className='register-form'>
+        <h1 className='register-link'>
+          Already a user? <a href='/login'>login</a>
+        </h1>
         <div>
           <label htmlFor='username'>Username</label>
           <input
