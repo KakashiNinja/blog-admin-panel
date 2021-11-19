@@ -1,0 +1,159 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer components {
+  body {
+    @apply bg-gray-300 dark:bg-gray-700 dark:text-gray-200;
+  }
+
+  .theme-switcher {
+    @apply mt-8;
+  }
+
+  .all-blogs {
+    @apply grid p-2 ml-24 gap-2 max-w-full overflow-x-hidden sm:grid-cols-2;
+  }
+
+  .single-blog {
+    @apply hover:shadow-xl hover:bg-gray-400 rounded p-4 cursor-pointer;
+  }
+
+  .single-blog h1 {
+    @apply font-extrabold text-2xl text-red-500;
+  }
+
+  .author-date {
+    @apply flex justify-between p-4;
+  }
+
+  .blog-area {
+    @apply h-auto w-screen flex;
+  }
+
+  .create-post {
+    @apply mx-auto dark:text-gray-200 flex flex-col items-center p-8 w-2/3 rounded-xl text-gray-900;
+  }
+
+  .create-post .fields {
+    @apply flex flex-col w-full;
+  }
+
+  .is-published {
+    @apply flex relative w-full h-12;
+  }
+
+  .is-published label {
+    @apply absolute left-0;
+  }
+
+  .is-published input {
+    @apply absolute left-28 top-2;
+  }
+
+  .create-post div label {
+    @apply font-extrabold text-xl mt-4;
+  }
+
+  .create-post div input {
+    @apply h-10;
+  }
+
+  .create-post div input,
+  textarea {
+    @apply rounded p-2 dark:text-gray-200;
+  }
+
+  .create-post button {
+    @apply bg-green-500 w-2/4 my-8 h-12 font-extrabold text-2xl rounded shadow-lg hover:bg-green-600;
+  }
+
+  .explore {
+    @apply ml-12 w-full mt-20 flex flex-col px-12 items-center;
+  }
+
+  .explore h1 {
+    @apply text-6xl text-red-400 font-extrabold;
+  }
+
+  .explore p {
+    @apply m-4;
+  }
+
+  .explore button {
+    @apply bg-green-500 text-white font-extrabold py-2 px-4 rounded-3xl hover:bg-white hover:text-green-500 hover:rounded-xl transition-all duration-300;
+  }
+
+  form {
+    @apply shadow-2xl;
+  }
+
+  nav {
+    @apply fixed w-24 flex flex-col items-center h-full bg-gray-800  text-white;
+  }
+
+  .icon {
+    @apply p-4 text-white text-3xl bg-green-500 mx-4 my-4 rounded-3xl hover:rounded-xl cursor-pointer hover:bg-white hover:text-green-500 transition-all duration-300;
+  }
+
+  .login-form {
+    @apply w-2/3 mx-auto p-8 flex flex-col rounded-xl;
+  }
+
+  .login-form div {
+    @apply flex flex-col my-4;
+  }
+
+  .login-form div label {
+    @apply text-xl font-extrabold;
+  }
+
+  .register-link {
+    @apply font-extrabold text-lg;
+  }
+
+  .register-link a {
+    @apply text-xl text-red-700 underline;
+  }
+
+  .login-form div input {
+    @apply h-8 rounded p-2 dark:text-gray-200;
+  }
+
+  .login-form button {
+    @apply bg-green-500 w-1/4 mx-auto my-4 py-2 rounded font-extrabold hover:bg-green-600;
+  }
+
+  .register-form {
+    @apply w-2/3 flex flex-col items-center dark:bg-gray-700 mx-auto p-8 rounded-xl;
+  }
+
+  .register-form div {
+    @apply flex flex-col my-4 w-full;
+  }
+
+  .register-form div label {
+    @apply text-xl mb-1 font-extrabold;
+  }
+
+  .register-form div input {
+    @apply h-8 p-4 rounded;
+  }
+
+  .register-form button {
+    @apply w-1/4 font-extrabold bg-green-500 rounded py-3 hover:bg-green-600;
+  }
+}
+
+#__next {
+  @apply w-screen h-screen;
+}
