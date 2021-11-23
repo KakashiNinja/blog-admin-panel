@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
-import axios from 'axios'
+import Link from 'next/link'
 
 const LoginForm = ({ setUserAuth }) => {
   const [values, setValues] = useState({
@@ -50,7 +50,10 @@ const LoginForm = ({ setUserAuth }) => {
   return (
     <form className='login-form'>
       <h1 className='register-link'>
-        New user? <a href='/register'>Register</a>
+        New user?{' '}
+        <Link href='register'>
+          <a>Register</a>
+        </Link>
       </h1>
       <div>
         <label htmlFor='username'>Username</label>

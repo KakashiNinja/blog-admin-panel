@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+import Link from 'next/link'
 
 const register = () => {
   return (
@@ -7,7 +8,10 @@ const register = () => {
       <Sidebar />
       <form className='register-form'>
         <h1 className='register-link'>
-          Already a user? <a href='/login'>login</a>
+          Already a user?{' '}
+          <Link href='/login'>
+            <a>Login</a>
+          </Link>
         </h1>
         <div>
           <label htmlFor='username'>Username</label>
