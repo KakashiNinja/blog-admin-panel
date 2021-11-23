@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/Sidebar'
 
-const SingleBlog = ({ post }) => {
+const SingleBlog = ({ post, key }) => {
   const date = new Date(post.date)
   const date_formatted = date.toLocaleDateString('en-gb', {
     year: 'numeric',
@@ -11,7 +11,7 @@ const SingleBlog = ({ post }) => {
     minute: '2-digit',
   })
   return (
-    <div className='single-blog' key={post._id}>
+    <div className='single-blog' key={key}>
       <h1>{post.title}</h1>
       <p>{post.text}</p>
       <div className='author-date'>
@@ -27,7 +27,7 @@ const Blogs = ({ posts }) => {
   return (
     <div className='all-blogs'>
       {(posts ?? []).map((post) => (
-        <SingleBlog post={post} />
+        <SingleBlog post={post} key={post._id} />
       ))}
     </div>
   )

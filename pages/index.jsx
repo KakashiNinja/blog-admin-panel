@@ -1,15 +1,8 @@
-import React, {
-  createContext,
-  useEffect,
-  useReducer,
-} from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Explore from '../components/Explore'
 import Sidebar from '../components/Sidebar'
-import authReducer from '../components/authReducer'
 import Login from './login'
-
-const AuthContext = createContext()
 
 const Container = () => {
   return (
@@ -21,32 +14,16 @@ const Container = () => {
 }
 
 export default function Home() {
-  const initialState = {
-    isAuthenticated: false,
-    token: null,
-  }
-  const [state, dispatch] = useReducer(
-    authReducer,
-    initialState
-  )
+  const [userAuth, setUserAuth] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-
-    token &&
-      dispatch({
-        type: 'login',
-        payload: {
-          token: token,
-        },
-      })
+    const user = localStorage.getItem('userAuth')
+    if (user) {
+      setUserAuth(true)
+    } else {
+      setUserAuth(false)
+    }
   }, [])
 
-  return (
-    <AuthContext.Provider value={{ state, dispatch }}>
-      <div>
-        {state.isAuthenticated ? <Container /> : <Login />}
-      </div>
-    </AuthContext.Provider>
-  )
+  return <>{!userAuth ? <Login /> : <Container />}</>
 }

@@ -1,16 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import axios from 'axios'
 
-const LoginForm = () => {
-  // const { dispatch } = useContext(AuthContext)
-  const [loginErr, setLoginErr] = useState(false)
-
+const LoginForm = ({ setUserAuth }) => {
   const [values, setValues] = useState({
     username: '',
     password: '',
-    confirm_password: '',
   })
+
+  const [loginErr, setLoginErr] = useState(false)
 
   const handleChange = (e) => {
     setValues({
@@ -21,27 +19,31 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const formData = JSON.stringify(values)
 
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      const body = JSON.stringify(values)
-
-      const res = await axios.post(
+      const req = await fetch(
         'https://ed-blog-api.herokuapp.com/api/login',
-        body,
-        config
+        {
+          method: 'POST',
+          mode: 'cors',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+            'Content-type': 'application/json',
+          },
+        }
       )
 
-      // dispatch({
-      //   type: 'login',
-      //   payload: res.data,
-      // })
+      const myJson = await req.json()
+      if (req.status !== 200) {
+        setLoginErr(true)
+        return
+      }
+      localStorage.setItem('token', myJson.token)
+      localStorage.setItem('userAuth', true)
     } catch (err) {
-      console.log(err)
+      setLoginErr(true)
     }
   }
 
@@ -57,7 +59,7 @@ const LoginForm = () => {
           name='username'
           required
           placeholder='John Doe'
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={handleChange}
         />
       </div>
       <div>
@@ -66,14 +68,14 @@ const LoginForm = () => {
           type='password'
           name='password'
           placeholder='SomethingSecure@7851'
-          onChange={(e) =>
-            setConfirmPassword(e.target.value)
-          }
+          onChange={handleChange}
           required
         />
       </div>
-      {loginErr && <p>Username or password incorrect.</p>}
-      <button type='submit' onClick={handleSubmit}>
+      <button
+        type='submit'
+        onClick={(e) => handleSubmit(e)}
+      >
         Login
       </button>
     </form>

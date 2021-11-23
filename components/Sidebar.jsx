@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { AiOutlineHome } from 'react-icons/ai'
 import { BsPencil } from 'react-icons/bs'
 import { BiLockAlt } from 'react-icons/bi'
@@ -11,19 +12,23 @@ const SidebarIcons = ({ icon }) => {
 const Sidebar = () => {
   return (
     <nav>
-      <button onClick={() => window.open('/', '_self')}>
-        <SidebarIcons icon={<AiOutlineHome />} />
-      </button>
-      <button
-        onClick={() => window.open('/create', '_self')}
-      >
-        <SidebarIcons icon={<BsPencil />} />
-      </button>
-      <button
-        onClick={() => window.open('/login', '_self')}
-      >
-        <SidebarIcons icon={<BiLockAlt />} />
-      </button>
+      <Link href='/'>
+        <a>
+          <SidebarIcons icon={<AiOutlineHome />} />
+        </a>
+      </Link>
+
+      <Link href='/create'>
+        <a>
+          <SidebarIcons icon={<BsPencil />} />
+        </a>
+      </Link>
+
+      <Link href='/login'>
+        <a>
+          <SidebarIcons icon={<BiLockAlt />} />
+        </a>
+      </Link>
       <ThemeSwitch />
     </nav>
   )
