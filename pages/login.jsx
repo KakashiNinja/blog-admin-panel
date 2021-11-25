@@ -79,17 +79,16 @@ const LoginForm = ({ setUserAuth }) => {
           required
         />
       </div>
-      {loginErr ? (
-        <p>Oops Login Error...</p>
-      ) : (
-        <p>Login Successful</p>
-      )}
+
       <button
         type='submit'
         onClick={(e) => handleSubmit(e)}
       >
         Login
       </button>
+      {loginErr && (
+        <p className='login-error'>Oops Login Error...</p>
+      )}
     </form>
   )
 }
