@@ -25,5 +25,10 @@ export default function Home() {
     }
   }, [])
 
-  return <>{!userAuth ? <Login /> : <Container />}</>
+  return (
+    <>
+      {!userAuth ? <Login /> : <Container />}
+      {/* <Container /> */}
+    </>
+  )
 }

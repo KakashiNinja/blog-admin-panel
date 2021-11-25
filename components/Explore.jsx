@@ -1,10 +1,7 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Explore = () => {
-  const exploreHandler = () => {
-    window.open('/blogs', '_self')
-  }
-
   return (
     <main className='explore'>
       <h1>Explore blogs by me...</h1>
@@ -13,7 +10,11 @@ const Explore = () => {
         around the world and technology, watch blogs by
         clicking below
       </p>
-      <button onClick={exploreHandler}>Explore</button>
+      <button>
+        <Link href='/blogs'>
+          <a>Explore</a>
+        </Link>
+      </button>
     </main>
   )
 }

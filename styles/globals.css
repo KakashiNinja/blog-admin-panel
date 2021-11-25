@@ -57,20 +57,16 @@
   }
 
   .is-published input {
-    @apply absolute left-28 top-2;
+    @apply absolute left-28 top-5;
   }
 
   .create-post div label {
     @apply font-extrabold text-xl mt-4;
   }
 
-  .create-post div input {
-    @apply h-10;
-  }
-
   .create-post div input,
   textarea {
-    @apply rounded p-2 dark:text-gray-200;
+    @apply rounded p-2 dark:text-black;
   }
 
   .create-post button {
@@ -126,7 +122,7 @@
   }
 
   .login-form div input {
-    @apply h-8 rounded p-2 dark:text-gray-200;
+    @apply h-8 rounded p-2 dark:text-black;
   }
 
   .login-form button {
@@ -146,7 +142,7 @@
   }
 
   .register-form div input {
-    @apply h-8 p-4 rounded;
+    @apply h-8 p-4 rounded dark:text-black;
   }
 
   .register-form button {

@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const LoginForm = ({ setUserAuth }) => {
+  const router = useRouter()
+
   const [values, setValues] = useState({
     username: '',
     password: '',
@@ -42,6 +45,7 @@ const LoginForm = ({ setUserAuth }) => {
       }
       localStorage.setItem('token', myJson.token)
       localStorage.setItem('userAuth', true)
+      router.push('/blogs')
     } catch (err) {
       setLoginErr(true)
     }
