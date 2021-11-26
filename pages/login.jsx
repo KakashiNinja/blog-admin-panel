@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import Sidebar from '../components/Sidebar'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import React, { useState } from "react"
+import Sidebar from "../components/Sidebar"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const LoginForm = ({ setUserAuth }) => {
   const router = useRouter()
 
   const [values, setValues] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   })
 
   const [loginErr, setLoginErr] = useState(false)
@@ -25,27 +25,24 @@ const LoginForm = ({ setUserAuth }) => {
     const formData = JSON.stringify(values)
 
     try {
-      const req = await fetch(
-        'https://ed-blog-api.herokuapp.com/api/login',
-        {
-          method: 'POST',
-          mode: 'cors',
-          body: formData,
-          headers: {
-            Accept: 'application/json',
-            'Content-type': 'application/json',
-          },
-        }
-      )
+      const req = await fetch("https://ed-blog-api.herokuapp.com/api/login", {
+        method: "POST",
+        mode: "cors",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      })
 
       const myJson = await req.json()
       if (req.status !== 200) {
         setLoginErr(true)
         return
       }
-      localStorage.setItem('token', myJson.token)
-      localStorage.setItem('userAuth', true)
-      router.push('/blogs')
+      localStorage.setItem("token", myJson.token)
+      localStorage.setItem("userAuth", true)
+      router.push("/blogs")
     } catch (err) {
       setLoginErr(true)
     }
@@ -54,7 +51,7 @@ const LoginForm = ({ setUserAuth }) => {
   return (
     <form className='login-form'>
       <h1 className='register-link'>
-        New user?{' '}
+        New user?{" "}
         <Link href='register'>
           <a>Register</a>
         </Link>
@@ -80,15 +77,10 @@ const LoginForm = ({ setUserAuth }) => {
         />
       </div>
 
-      <button
-        type='submit'
-        onClick={(e) => handleSubmit(e)}
-      >
+      <button type='submit' onClick={(e) => handleSubmit(e)}>
         Login
       </button>
-      {loginErr && (
-        <p className='login-error'>Oops Login Error...</p>
-      )}
+      {loginErr && <p className='login-error'>Oops Login Error...</p>}
     </form>
   )
 }
