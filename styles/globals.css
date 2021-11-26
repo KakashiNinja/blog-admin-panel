@@ -41,7 +41,7 @@
   }
 
   .login-form div input {
-    @apply h-8 rounded p-2 dark:text-black;
+    @apply h-8 rounded p-2 dark:text-white;
   }
 
   .login-form button {
@@ -98,7 +98,7 @@
 
   .create-post div input,
   textarea {
-    @apply rounded p-2 dark:text-black;
+    @apply rounded p-2 dark:text-white;
   }
 
   .create-post button {
@@ -146,7 +146,7 @@
   }
 
   .register-form div input {
-    @apply h-8 p-4 rounded dark:text-black;
+    @apply h-8 p-4 rounded dark:text-white;
   }
 
   .register-form button {

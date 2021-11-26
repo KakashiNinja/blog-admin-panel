@@ -42,6 +42,7 @@ const LoginForm = ({ setUserAuth }) => {
       }
       localStorage.setItem("token", myJson.token)
       localStorage.setItem("userAuth", true)
+      setUserAuth(true)
       router.push("/blogs")
     } catch (err) {
       setLoginErr(true)
