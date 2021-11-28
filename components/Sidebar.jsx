@@ -10,7 +10,7 @@ const SidebarIcons = ({ icon }) => {
   return <div className='icon'>{icon}</div>
 }
 
-const Sidebar = () => {
+const Sidebar = ({ userAuth }) => {
   return (
     <nav>
       <Link href='/'>
@@ -25,13 +25,13 @@ const Sidebar = () => {
         </a>
       </Link>
 
-      <Link href='/login'>
+      <Link href={userAuth ? "/logout" : "/login"}>
         <a>
           <SidebarIcons icon={<BiLockAlt />} />
         </a>
       </Link>
 
-      <Link href='https://github.com/DevChaudhary78'>
+      <Link href='https://github.com/DevChaudhary78' target='_blank'>
         <a>
           <SidebarIcons icon={<RiGithubLine />} />
         </a>

@@ -5,10 +5,10 @@ import Explore from "../components/Explore"
 import Sidebar from "../components/Sidebar"
 import Login from "./login"
 
-const Container = () => {
+const Container = ({ userAuth }) => {
   return (
     <div className='flex h-full w-full'>
-      <Sidebar />
+      <Sidebar userAuth={userAuth} />
       <Explore />
     </div>
   )
@@ -32,7 +32,7 @@ export default function Home() {
         <title>Naruto | Admin</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
-      {!userAuth ? <Login /> : <Container />}
+      {!userAuth ? <Login /> : <Container userAuth={userAuth} />}
       {/* <Container /> */}
     </>
   )

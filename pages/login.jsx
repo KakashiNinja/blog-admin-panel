@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import Sidebar from "../components/Sidebar"
-import Link from "next/link"
 import { useRouter } from "next/router"
 
 const LoginForm = ({ setUserAuth }) => {
@@ -51,12 +50,6 @@ const LoginForm = ({ setUserAuth }) => {
 
   return (
     <form className='login-form'>
-      <h1 className='register-link'>
-        New user?{" "}
-        <Link href='register'>
-          <a>Register</a>
-        </Link>
-      </h1>
       <div>
         <label htmlFor='username'>Username</label>
         <input
@@ -81,7 +74,6 @@ const LoginForm = ({ setUserAuth }) => {
       <button type='submit' onClick={(e) => handleSubmit(e)}>
         Login
       </button>
-      {loginErr && <p className='login-error'>Oops Login Error...</p>}
     </form>
   )
 }
