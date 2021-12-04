@@ -83,14 +83,10 @@ const CreatePost = () => {
         />
       </div>
 
-      {/* <div className='is-published'>
+      <div className='is-published'>
         <label htmlFor='published'>Published</label>
-        <input
-          type='checkbox'
-          name='published'
-          id='published'
-        />
-      </div> */}
+        <input type='checkbox' name='published' id='published' />
+      </div>
 
       <button onClick={(e) => handleSubmit(e)}>Submit</button>
       {successMsg && <p>Successfully Submitted!</p>}

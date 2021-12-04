@@ -85,7 +85,7 @@
   }
 
   .is-published input {
-    @apply absolute left-28 top-5;
+    @apply absolute left-28 top-6;
   }
 
   .login-error {

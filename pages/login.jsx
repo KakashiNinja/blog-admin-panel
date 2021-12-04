@@ -26,7 +26,6 @@ const LoginForm = ({ setUserAuth }) => {
     try {
       const req = await fetch("https://ed-blog-api.herokuapp.com/api/login", {
         method: "POST",
-        mode: "cors",
         body: formData,
         headers: {
           Accept: "application/json",
@@ -41,8 +40,8 @@ const LoginForm = ({ setUserAuth }) => {
       }
       localStorage.setItem("token", myJson.token)
       localStorage.setItem("userAuth", true)
-      setUserAuth(true)
       router.push("/blogs")
+      setUserAuth(true)
     } catch (err) {
       setLoginErr(true)
     }
@@ -71,9 +70,7 @@ const LoginForm = ({ setUserAuth }) => {
         />
       </div>
 
-      <button type='submit' onClick={(e) => handleSubmit(e)}>
-        Login
-      </button>
+      <button onClick={(e) => handleSubmit(e)}>Login</button>
     </form>
   )
 }
