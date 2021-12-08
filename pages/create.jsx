@@ -1,36 +1,53 @@
-import React, { useState } from 'react'
-import Sidebar from '../components/Sidebar'
-import Router from 'next/router'
-import axios from 'axios'
+import React, { useState } from "react"
+import Sidebar from "../components/Sidebar"
+import { useRouter } from "next/router"
 
 const CreatePost = () => {
   const [successMsg, setSuccessMsg] = useState(false)
+  const history = useRouter()
 
-  const [title, setTitle] = useState('')
-  const [text, setText] = useState('')
-  const [author_name, setAuthorName] = useState('')
+  const [values, setValues] = useState({
+    title: "",
+    text: "",
+    author_name: "",
+  })
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
+    const token = localStorage.getItem("token")
+    const bearer = `Bearer ${token}`
+    console.log(bearer)
+    const formData = JSON.stringify(values)
+
     try {
-      e.preventDefault()
-      const req = axios.post(
-        'https://ed-blog-api.herokuapp.com/api/posts',
-        { title, text, author_name },
-        { 'Content-Type': 'application/json' }
-      )
-      if (req.status !== 200) return
-      Router.push('/blogs')
+      const req = await fetch("https://ed-blog-api.herokuapp.com/api/posts", {
+        method: "post",
+        body: formData,
+        headers: {
+          Authorization: bearer,
+          "Content-Type": "application/json",
+        },
+      })
+
+      if (req.status !== 200) {
+        return
+      }
       setSuccessMsg(true)
+      history.push("/blogs")
     } catch (err) {
       console.log(err)
     }
   }
 
   return (
-    <form
-      className='create-post'
-      onSubmit={(e) => handleSubmit(e)}
-    >
+    <form className='create-post' onSubmit={(e) => handleSubmit(e)}>
       <div className='fields'>
         <label htmlFor='title'>Title</label>
         <input
@@ -38,7 +55,7 @@ const CreatePost = () => {
           type='text'
           id='title'
           name='title'
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={handleChange}
           required
         />
       </div>
@@ -49,7 +66,7 @@ const CreatePost = () => {
           placeholder='And here ladyfinger is the biggest mastermind behind all of this'
           type='text'
           id='text'
-          onChange={(e) => setText(e.target.value)}
+          onChange={handleChange}
           name='text'
           required
         />
@@ -60,7 +77,7 @@ const CreatePost = () => {
         <input
           placeholder='George R.R. Martin'
           type='text'
-          onChange={(e) => setAuthorName(e.target.value)}
+          onChange={handleChange}
           id='author_name'
           name='author_name'
           required
@@ -69,14 +86,10 @@ const CreatePost = () => {
 
       <div className='is-published'>
         <label htmlFor='published'>Published</label>
-        <input
-          type='checkbox'
-          name='published'
-          id='published'
-        />
+        <input type='checkbox' name='published' id='published' />
       </div>
 
-      <button>Submit</button>
+      <button onClick={(e) => handleSubmit(e)}>Submit</button>
       {successMsg && <p>Successfully Submitted!</p>}
     </form>
   )

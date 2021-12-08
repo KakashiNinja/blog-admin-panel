@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
+import Head from "next/head"
 
-import Explore from '../components/Explore'
-import Sidebar from '../components/Sidebar'
-import Login from './login'
+import Explore from "../components/Explore"
+import Sidebar from "../components/Sidebar"
+import Login from "./login"
 
-const Container = () => {
+const Container = ({ userAuth }) => {
   return (
     <div className='flex h-full w-full'>
-      <Sidebar />
+      <Sidebar userAuth={userAuth} />
       <Explore />
     </div>
   )
@@ -17,7 +18,7 @@ export default function Home() {
   const [userAuth, setUserAuth] = useState(false)
 
   useEffect(() => {
-    const user = localStorage.getItem('userAuth')
+    const user = localStorage.getItem("userAuth")
     if (user) {
       setUserAuth(true)
     } else {
@@ -27,7 +28,11 @@ export default function Home() {
 
   return (
     <>
-      {!userAuth ? <Login /> : <Container />}
+      <Head>
+        <title>Naruto | Admin</title>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
+      {!userAuth ? <Login /> : <Container userAuth={userAuth} />}
       {/* <Container /> */}
     </>
   )
