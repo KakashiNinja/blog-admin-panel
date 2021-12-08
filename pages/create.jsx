@@ -23,6 +23,7 @@ const CreatePost = () => {
     e.preventDefault()
     const token = localStorage.getItem("token")
     const bearer = `Bearer ${token}`
+    console.log(bearer)
     const formData = JSON.stringify(values)
 
     try {
@@ -38,8 +39,8 @@ const CreatePost = () => {
       if (req.status !== 200) {
         return
       }
-      history.pushState("/blogs")
       setSuccessMsg(true)
+      history.push("/blogs")
     } catch (err) {
       console.log(err)
     }

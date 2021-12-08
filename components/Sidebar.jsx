@@ -32,13 +32,13 @@ const Sidebar = ({ userAuth }) => {
       </Link>
 
       <Link href='https://github.com/DevChaudhary78' target='_blank'>
-        <a>
+        <a target='_blank'>
           <SidebarIcons icon={<RiGithubLine />} />
         </a>
       </Link>
 
       <Link href='https://twitter.com/smashydevz7854'>
-        <a>
+        <a target='_blank'>
           <SidebarIcons icon={<BsTwitter />} />
         </a>
       </Link>
