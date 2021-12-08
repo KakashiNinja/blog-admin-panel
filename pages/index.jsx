@@ -29,11 +29,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Naruto | Admin</title>
+        <title>Explore</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
       {!userAuth ? <Login /> : <Container userAuth={userAuth} />}
-      {/* <Container /> */}
     </>
   )
 }

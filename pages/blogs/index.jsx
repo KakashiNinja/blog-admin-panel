@@ -1,9 +1,15 @@
 import React from "react"
 import Sidebar from "../../components/Sidebar"
+import Head from 'next/head'
 
 // The issue here is that blogs, as a prop value, is undefined until the asynchronous logic defines and populates it. can fix it using blogs =[] or (blogs ?? [])
 const Blogs = ({ posts }) => {
   return (
+    <>
+    <Head>
+        <title>Blogs</title>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
     <div className='all-blogs'>
       {(posts ?? []).map((post) => {
         const date = new Date(post.date)
@@ -26,6 +32,7 @@ const Blogs = ({ posts }) => {
         )
       })}
     </div>
+    </>
   )
 }
 
