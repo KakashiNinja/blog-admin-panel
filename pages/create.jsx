@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Sidebar from "../components/Sidebar"
 import { useRouter } from "next/router"
+import Head from 'next/head'
 
 const CreatePost = () => {
   const [successMsg, setSuccessMsg] = useState(false)
@@ -98,6 +99,10 @@ const CreatePost = () => {
 const Create = () => {
   return (
     <>
+    <Head>
+        <title>Create</title>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
       <Sidebar />
       <CreatePost />
     </>

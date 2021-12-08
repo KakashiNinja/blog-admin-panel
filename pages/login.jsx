@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Sidebar from "../components/Sidebar"
 import { useRouter } from "next/router"
+import Head from 'next/head'
 
 const LoginForm = ({ setUserAuth }) => {
   const router = useRouter()
@@ -78,6 +79,10 @@ const LoginForm = ({ setUserAuth }) => {
 const Login = () => {
   return (
     <>
+    <Head>
+        <title>Login</title>
+        <link rel='icon' href='/favicon.png' />
+      </Head>
       <Sidebar />
       <LoginForm />
     </>
