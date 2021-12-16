@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Sidebar from "../components/Sidebar"
 import { useRouter } from "next/router"
-import Head from 'next/head'
+import Head from "next/head"
 
 const LoginForm = ({ setUserAuth }) => {
   const router = useRouter()
@@ -25,7 +25,7 @@ const LoginForm = ({ setUserAuth }) => {
     const formData = JSON.stringify(values)
 
     try {
-      const req = await fetch("https://ed-blog-api.herokuapp.com/api/login", {
+      const req = await fetch("http://ed-blog-api.herokuapp.com/api/login", {
         method: "POST",
         body: formData,
         headers: {
@@ -79,7 +79,7 @@ const LoginForm = ({ setUserAuth }) => {
 const Login = () => {
   return (
     <>
-    <Head>
+      <Head>
         <title>Login</title>
         <link rel='icon' href='/favicon.png' />
       </Head>

@@ -5,7 +5,7 @@ const logout = () => {
   const history = useRouter()
 
   const handleLogout = async () => {
-    const req = await fetch("https://ed-blog-api.herokuapp.com/api/logout")
+    const req = await fetch("http://ed-blog-api.herokuapp.com/api/logout")
 
     if (req.status !== 200) {
       return

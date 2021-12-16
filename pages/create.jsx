@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Sidebar from "../components/Sidebar"
 import { useRouter } from "next/router"
-import Head from 'next/head'
+import Head from "next/head"
 
 const CreatePost = () => {
   const [successMsg, setSuccessMsg] = useState(false)
@@ -24,11 +24,10 @@ const CreatePost = () => {
     e.preventDefault()
     const token = localStorage.getItem("token")
     const bearer = `Bearer ${token}`
-    console.log(bearer)
     const formData = JSON.stringify(values)
 
     try {
-      const req = await fetch("https://ed-blog-api.herokuapp.com/api/posts", {
+      const req = await fetch("http://ed-blog-api.herokuapp.com/api/posts", {
         method: "post",
         body: formData,
         headers: {
@@ -99,7 +98,7 @@ const CreatePost = () => {
 const Create = () => {
   return (
     <>
-    <Head>
+      <Head>
         <title>Create</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
