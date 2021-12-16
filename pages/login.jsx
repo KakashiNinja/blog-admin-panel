@@ -25,7 +25,7 @@ const LoginForm = ({ setUserAuth }) => {
     const formData = JSON.stringify(values)
 
     try {
-      const req = await fetch("http://ed-blog-api.herokuapp.com/api/login", {
+      const req = await fetch("https://ed-blog-api.herokuapp.com/api/login", {
         method: "POST",
         body: formData,
         headers: {

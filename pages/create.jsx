@@ -27,7 +27,7 @@ const CreatePost = () => {
     const formData = JSON.stringify(values)
 
     try {
-      const req = await fetch("http://ed-blog-api.herokuapp.com/api/posts", {
+      const req = await fetch("https://ed-blog-api.herokuapp.com/api/posts", {
         method: "post",
         body: formData,
         headers: {

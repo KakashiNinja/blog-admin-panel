@@ -37,7 +37,7 @@ const Blogs = ({ posts }) => {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://ed-blog-api.herokuapp.com/api/posts")
+  const res = await fetch("https://ed-blog-api.herokuapp.com/api/posts")
   const blogs = await res.json()
   const posts = blogs.posts
 
