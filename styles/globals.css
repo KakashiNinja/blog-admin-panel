@@ -41,7 +41,7 @@
   }
 
   .login-form div input {
-    @apply h-8 rounded p-2 dark:text-black;
+    @apply h-8 rounded p-2 dark:text-white dark:bg-gray-600;
   }
 
   .login-form button {
@@ -49,7 +49,7 @@
   }
 
   .all-blogs {
-    @apply grid p-2 ml-24 gap-2 max-w-full overflow-x-hidden sm:grid-cols-2;
+    @apply grid p-2 ml-24 gap-2 w-auto max-w-full grid-cols-1 sm:grid-cols-4;
   }
 
   .single-blog {
@@ -65,7 +65,7 @@
   }
 
   .blog-area {
-    @apply h-auto w-screen flex;
+    @apply h-auto w-screen;
   }
 
   .create-post {
@@ -98,7 +98,7 @@
 
   .create-post div input,
   textarea {
-    @apply rounded p-2 dark:text-black;
+    @apply rounded p-2 dark:text-white dark:bg-gray-600;
   }
 
   .create-post button {
@@ -132,28 +132,8 @@
   .icon {
     @apply p-3 text-white text-3xl bg-green-500 mx-4 my-4 rounded-full hover:rounded-3xl cursor-pointer hover:bg-white hover:text-green-500 transition-all duration-300;
   }
-
-  .register-form {
-    @apply w-2/3 flex flex-col items-center dark:bg-gray-700 mx-auto p-8 rounded-xl;
-  }
-
-  .register-form div {
-    @apply flex flex-col my-4 w-full;
-  }
-
-  .register-form div label {
-    @apply text-xl mb-1 font-extrabold;
-  }
-
-  .register-form div input {
-    @apply h-8 p-4 rounded dark:text-white;
-  }
-
-  .register-form button {
-    @apply w-1/4 font-extrabold bg-green-500 rounded py-3 hover:bg-green-600;
-  }
 }
 
-#__next {
+/* #__next {
   @apply w-screen h-screen;
-}
+} */
