@@ -1,0 +1,15 @@
+.all-blogs {
+  @apply grid p-2 ml-24 gap-2 w-auto max-w-full grid-cols-1 sm:grid-cols-4;
+
+  .single-blog {
+    @apply hover:shadow-xl hover:bg-gray-400 rounded p-4;
+
+    h1 {
+      @apply font-extrabold text-2xl text-red-500;
+    }
+
+    .author-date {
+      @apply flex justify-between p-4;
+    }
+  }
+}

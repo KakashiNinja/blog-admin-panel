@@ -1,0 +1,39 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./components/login.scss";
+@import "./components/create.scss";
+@import "./components/explore.scss";
+@import "./components/blogs.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer components {
+  body {
+    @apply bg-gray-300 dark:bg-gray-700 dark:text-gray-200;
+  }
+
+  .theme-switcher {
+    @apply mt-8;
+  }
+
+  form {
+    @apply shadow-2xl;
+  }
+
+  nav {
+    @apply fixed w-24 flex flex-col items-center h-full bg-gray-800  text-white;
+  }
+
+  .icon {
+    @apply p-3 text-white text-3xl bg-green-500 mx-4 my-4 rounded-full hover:rounded-3xl cursor-pointer hover:bg-white hover:text-green-500 transition-all duration-300;
+  }
+}

@@ -1,0 +1,35 @@
+.create-post {
+  @apply mx-auto dark:text-gray-200 flex flex-col items-center p-8 w-2/3 rounded-xl text-gray-900;
+
+  .fields {
+    @apply flex flex-col w-full;
+
+    label {
+      @apply font-extrabold text-xl mt-4;
+    }
+
+    input {
+      @apply rounded p-2 dark:text-white dark:bg-gray-600;
+    }
+
+    textarea {
+      @apply rounded p-2 dark:text-white dark:bg-gray-600;
+    }
+  }
+
+  .is-published {
+    @apply flex relative w-full h-12;
+
+    label {
+      @apply absolute left-0 top-5;
+    }
+
+    input {
+      @apply absolute left-20 top-6;
+    }
+  }
+
+  button {
+    @apply bg-green-500 w-2/4 my-8 h-12 font-extrabold text-2xl rounded shadow-lg hover:bg-green-600;
+  }
+}

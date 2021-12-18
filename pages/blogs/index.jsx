@@ -1,6 +1,7 @@
 import React from "react"
 import Sidebar from "../../components/Sidebar"
 import Head from "next/head"
+import Link from "next/link"
 
 // The issue here is that blogs, as a prop value, is undefined until the asynchronous logic defines and populates it. can fix it using blogs =[] or (blogs ?? [])
 const Blogs = ({ posts }) => {
@@ -28,6 +29,7 @@ const Blogs = ({ posts }) => {
                 <h6> ~ {post.author_name}</h6>
                 <h6>{date_formatted}</h6>
               </div>
+              <Link href={`/blogs/${post._id}`}>more...</Link>
             </div>
           )
         })}
