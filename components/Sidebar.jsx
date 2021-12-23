@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
-import { AiOutlineHome } from "react-icons/ai"
-import { BsPencil, BsTwitter } from "react-icons/bs"
+import { AiOutlineHome, AiFillLinkedin } from "react-icons/ai"
+import { BsPencil } from "react-icons/bs"
 import { BiLockAlt } from "react-icons/bi"
 import ThemeSwitch from "./them-switch"
 import { RiGithubLine } from "react-icons/ri"
@@ -37,9 +37,9 @@ const Sidebar = ({ userAuth }) => {
         </a>
       </Link>
 
-      <Link href='https://twitter.com/smashydevz7854'>
+      <Link href='https://www.linkedin.com/in/dev-chaudhary-935054170/'>
         <a target='_blank'>
-          <SidebarIcons icon={<BsTwitter />} />
+          <SidebarIcons icon={<AiFillLinkedin />} />
         </a>
       </Link>
       <ThemeSwitch />

@@ -21,15 +21,17 @@ const Blogs = ({ posts }) => {
             hour: "numeric",
             minute: "2-digit",
           })
+
+          const pid = post._id
           return (
-            <div className='single-blog' key={post._id}>
+            <div className='single-blog' key={pid}>
               <h1>{post.title}</h1>
               <p>{post.text}</p>
               <div className='author-date'>
                 <h6> ~ {post.author_name}</h6>
                 <h6>{date_formatted}</h6>
               </div>
-              <Link href={`/blogs/${post._id}`}>more...</Link>
+              <Link href={`/blogs/${pid}`}>more...</Link>
             </div>
           )
         })}
@@ -38,7 +40,7 @@ const Blogs = ({ posts }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch("https://ed-blog-api.herokuapp.com/api/posts")
   const blogs = await res.json()
   const posts = blogs.posts
