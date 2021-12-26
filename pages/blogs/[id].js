@@ -1,13 +1,28 @@
-import React from "react"
 import { useRouter } from "next/router"
+import { useState, useEffect } from "react"
+import useSWR from "swr"
 
-const BlogInfo = () => {
+function Blog() {
+  const [data, setData] = useState({})
+
   const router = useRouter()
+  const { id } = router.query
 
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
-  return <div>In Construction</div>
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        `https://ed-blog-api.herokuapp.com/api/posts/${id}`
+      )
+
+      const post = await res.json()
+
+      setData(post)
+    }
+
+    fetchData()
+  }, [id])
+
+  return <div>{data.title}</div>
 }
 
-export default BlogInfo
+export default Blog

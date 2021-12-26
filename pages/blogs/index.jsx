@@ -1,10 +1,24 @@
-import React from "react"
+import { useEffect, useState } from "react"
 import Sidebar from "../../components/Sidebar"
 import Head from "next/head"
 import Link from "next/link"
 
 // The issue here is that blogs, as a prop value, is undefined until the asynchronous logic defines and populates it. can fix it using blogs =[] or (blogs ?? [])
-const Blogs = ({ posts }) => {
+const Blogs = () => {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("https://ed-blog-api.herokuapp.com/api/posts")
+
+      const posts = await res.json()
+
+      setPosts(posts.posts)
+    }
+
+    fetchData()
+  }, [])
+
   return (
     <>
       <Head>
@@ -38,18 +52,6 @@ const Blogs = ({ posts }) => {
       </div>
     </>
   )
-}
-
-export async function getServerSideProps() {
-  const res = await fetch("https://ed-blog-api.herokuapp.com/api/posts")
-  const blogs = await res.json()
-  const posts = blogs.posts
-
-  return {
-    props: {
-      posts,
-    },
-  }
 }
 
 const index = ({ posts }) => {
