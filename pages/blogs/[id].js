@@ -1,6 +1,5 @@
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
-import useSWR from "swr"
 
 function Blog() {
   const [data, setData] = useState({})
@@ -22,7 +21,7 @@ function Blog() {
     fetchData()
   }, [id])
 
-  return <div>{data.title}</div>
+  return <h1>{data._id}</h1>
 }
 
 export default Blog
